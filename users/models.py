@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -17,10 +18,71 @@ class User(AbstractUser):
     This model represents the User instance of the system, login system and
     everything that relates with an `User` is represented by this model.
     """
-
-    # First Name and Last Name do not cover name patterns
-    # around the globe.
-    name = models.CharField(_("Name of User"), blank=True, null=True, max_length=255)
+    name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=255,
+    )
+    mrn = models.TextField(
+        null=True,
+        blank=True,
+    )
+    twi_partnumber = models.TextField(
+        null=True,
+        blank=True,
+    )
+    lgth = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+    units = models.TextField(
+        null=True,
+        blank=True,
+    )
+    org_lgth = models.TextField(
+        null=True,
+        blank=True,
+    )
+    workOrder = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+    vender = models.TextField(
+        null=True,
+        blank=True,
+    )
+    lotNumber = models.BigIntegerField(
+        null=True,
+        blank=True,
+    )
+    rollNumber = models.BigIntegerField(
+        null=True,
+        blank=True,
+    )
+    useByDate = models.DateField(
+        null=True,
+        blank=True,
+    )
+    supMfgDate = models.DateField(
+        null=True,
+        blank=True,
+    )
+    recievedDate = models.DateField(
+        null=True,
+        blank=True,
+    )
+    size = models.TextField(
+        null=True,
+        blank=True,
+    )
+    shelfLife = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+    mpn = models.TextField(
+        null=True,
+        blank=True,
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
